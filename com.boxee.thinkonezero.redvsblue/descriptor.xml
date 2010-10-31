@@ -2,7 +2,7 @@
 <app>
 	<id>com.boxee.thinkonezero.redvsblue</id>
 	<name>Red vs. Blue</name>
-	<version>0.9</version>
+	<version>0.9.1</version>
 	<description>Red vs. Blue is a web series of videos based on the Xbox Halo game engine.</description>
 	<thumb>http://boxee.thinkonezero.com/redvsblue/build/im/thumb_200x200.png</thumb>
 	<repositoryid>com.boxee.thinkonezero</repositoryid>

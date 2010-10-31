@@ -86,7 +86,7 @@ myTracker.trackView("home")
 n = mc.GetActiveWindow().GetList(111).GetFocusedItem()
 listitem = mc.GetActiveWindow().GetList(111).GetItem(n)
 
-myTracker.trackEvent("Event", "Play", ListItem.Label)
+myTracker.trackEvent("Event", "Play", listitem.GetLabel())
 mc.GetPlayer().Play(listitem)
 ]]></onclick>
 					</content>
