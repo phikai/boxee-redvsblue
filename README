@@ -1,0 +1,35 @@
++---------------------------------------+
+|            Think One Zero             |
+|     http://boxee.thinkonezero.com     |
+|     boxee[AT]thinkonezero[DOT]com     |
++---------------------------------------+
+
+Github Information
+User: phikai
+Branch:  phikai / boxee-redvsblue  
+
+Repository Information:
+URL: http://repository.boxee.thinkonezero.com
+The Think One Zero Repository contains all boxee applications developed
+and supported by Think One Zero.
+
+The apps:
+* ESPN3: http://espn3.com
+* FilmCow: http://filmcow.com
+* Red vs. Blue: http://redvsblue.com
+
+== About Red vs. Blue App ==
+The Red vs. Blue app for Boxee provides all the youtube available videos
+from the Red vs. Blue Web Series.
+
+== Install ==
+
+Since these aren't yet in the official repository, you need to 
+add "http://repositroy.boxee.thinkonezero.com" as a 3rd party repository first
+
+1. Apps
+2. Add Repository (all the way on the bottom in the left pane) 
+3. http://repositroy.boxee.thinkonezero.com
+
+You'll then be able to see all apps in the repository and add them to your apps.
+
