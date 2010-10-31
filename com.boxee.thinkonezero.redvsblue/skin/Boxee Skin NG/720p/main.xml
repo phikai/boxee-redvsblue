@@ -1,0 +1,334 @@
+<?xml version="1.0"?>
+<window type="window" id="14000">
+<onload lang="python"><![CDATA[
+import tracker
+
+myTracker = tracker.Tracker("MO-3541558-10")
+myTracker.trackView("home")
+]]></onload>
+	<defaultcontrol always="true">111</defaultcontrol>
+	<allowoverlay>no</allowoverlay>
+	<controls>
+		<control type="group">
+			<control type="group" id="110">
+				<control type="image">
+					<posx>0</posx>
+					<posy>0</posy>
+					<width>1280</width>
+					<height>720</height>
+					<texture>main.png</texture>
+				</control>
+				<control type="label" id="1200">
+					<posx>100</posx>
+					<posy>100</posy>
+					<width>350</width>
+					<height>50</height>
+					<font>font40</font>
+					<align>left</align>
+					<aligny>top</aligny>
+					<label>Season 1</label>
+					<textcolor>white</textcolor>
+				</control>
+				<control type="list" id="111">
+					<animation type="Conditional" condition="Window.IsVisible(DialogProgress.xml)">
+						<effect type="fade" start="100" end="20" time="200"/>
+					</animation>
+					<posx>100</posx>
+					<posy>150</posy>
+					<width>350</width>
+					<height>450</height>
+					<onright>1201</onright>
+					<ondown>1201</ondown>
+					<orientation>vertical</orientation>
+					<itemlayout width="340" height="20">
+						<control type="label">
+							<posx>0</posx>
+							<posy>0</posy>
+							<width>340</width>
+							<height>20</height>
+							<font>font16</font>
+							<align>left</align>
+							<aligny>top</aligny>
+							<label>$INFO[ListItem.Label]</label>
+							<textcolor>white</textcolor>
+						</control>
+					</itemlayout>
+					<focusedlayout width="340" height="20">
+						<control type="label">
+							<visible>!Control.HasFocus(111)</visible>
+							<posx>0</posx>
+							<posy>0</posy>
+							<width>340</width>
+							<height>20</height>
+							<font>font16</font>
+							<align>left</align>
+							<aligny>top</aligny>
+							<label>$INFO[ListItem.Label]</label>
+							<textcolor>white</textcolor>
+						</control>
+						<control type="label">
+							<visible>Control.HasFocus(111)</visible>
+							<posx>0</posx>
+							<posy>0</posy>
+							<width>340</width>
+							<height>20</height>
+							<font>font16</font>
+							<align>left</align>
+							<aligny>top</aligny>
+							<label>$INFO[ListItem.Label]</label>
+							<textcolor>FF7A0000</textcolor>
+							<scroll>true</scroll>
+							<scrollspeed>30</scrollspeed>
+						</control>
+					</focusedlayout>
+					<content type="url" url="http://gdata.youtube.com/feeds/api/playlists/49C4397CE9AC5260?v=2&alt=rss">
+						<onclick lang="python"><![CDATA[
+n = mc.GetActiveWindow().GetList(111).GetFocusedItem()
+listitem = mc.GetActiveWindow().GetList(111).GetItem(n)
+
+myTracker.trackEvent("Event", "Play", ListItem.Label)
+mc.GetPlayer().Play(listitem)
+]]></onclick>
+					</content>
+				</control>
+				<control type="image">
+					<animation type="Conditional" condition="Window.IsVisible(DialogProgress.xml)">
+						<effect type="fade" start="100" end="20" time="200"/>
+					</animation>
+					<posx>550</posx>
+					<posy>120</posy>
+					<width>480</width>
+					<height>360</height>
+					<texture diffuse="mask.png">$INFO[Container(111).ListItem.Thumb]</texture>
+				</control>
+				<control type="button" id="1201">
+					<posx>550</posx>
+					<posy>485</posy>
+					<width>92</width>
+					<height>29</height>
+					<visible>true</visible>
+					<texturefocus>button_blue_hover.png</texturefocus>
+					<texturenofocus>button_blue.png</texturenofocus>
+					<label>Season 1</label>
+					<font>font16</font>
+					<textcolor>white</textcolor>
+					<align>center</align>
+					<aligny>center</aligny>
+					<onleft>111</onleft>
+					<onright>1202</onright>
+					<ondown>1206</ondown>
+					<onclick lang="python"><![CDATA[
+list = mc.GetActiveWindow().GetList(111)
+list.SetContentURL("http://gdata.youtube.com/feeds/api/playlists/49C4397CE9AC5260?v=2&alt=rss")
+label = mc.GetWindow(14000).GetLabel(1200)
+label.SetLabel("Season 1")
+
+myTracker.trackEvent("Content", "Click", "Season 1")
+]]></onclick>
+				</control>
+				<control type="button" id="1202">
+					<posx>647</posx>
+					<posy>485</posy>
+					<width>92</width>
+					<height>29</height>
+					<visible>true</visible>
+					<texturefocus>button_blue_hover.png</texturefocus>
+					<texturenofocus>button_blue.png</texturenofocus>
+					<label>Season 2</label>
+					<font>font16</font>
+					<textcolor>white</textcolor>
+					<align>center</align>
+					<aligny>center</aligny>
+					<onleft>1201</onleft>
+					<onright>1203</onright>
+					<onup>111</onup>
+					<ondown>1207</ondown>
+					<onclick lang="python"><![CDATA[
+list = mc.GetActiveWindow().GetList(111)
+list.SetContentURL("http://gdata.youtube.com/feeds/api/playlists/F95A9033A2D5A326?v=2&alt=rss")
+label = mc.GetWindow(14000).GetLabel(1200)
+label.SetLabel("Season 2")
+
+myTracker.trackEvent("Content", "Click", "Season 2")
+]]></onclick>
+				</control>
+				<control type="button" id="1203">
+					<posx>744</posx>
+					<posy>485</posy>
+					<width>92</width>
+					<height>29</height>
+					<visible>true</visible>
+					<texturefocus>button_blue_hover.png</texturefocus>
+					<texturenofocus>button_blue.png</texturenofocus>
+					<label>Season 3</label>
+					<font>font16</font>
+					<textcolor>white</textcolor>
+					<align>center</align>
+					<aligny>center</aligny>
+					<onleft>1202</onleft>
+					<onright>1204</onright>
+					<onup>111</onup>
+					<ondown>1208</ondown>
+					<onclick lang="python"><![CDATA[
+list = mc.GetActiveWindow().GetList(111)
+list.SetContentURL("http://gdata.youtube.com/feeds/api/playlists/4672D826BE54162D?v=2&alt=rss")
+label = mc.GetWindow(14000).GetLabel(1200)
+label.SetLabel("Season 3")
+
+myTracker.trackEvent("Content", "Click", "Season 3")
+]]></onclick>
+				</control>
+				<control type="button" id="1204">
+					<posx>841</posx>
+					<posy>485</posy>
+					<width>92</width>
+					<height>29</height>
+					<visible>true</visible>
+					<texturefocus>button_blue_hover.png</texturefocus>
+					<texturenofocus>button_blue.png</texturenofocus>
+					<label>Season 4</label>
+					<font>font16</font>
+					<textcolor>white</textcolor>
+					<align>center</align>
+					<aligny>center</aligny>
+					<onleft>1203</onleft>
+					<onright>1205</onright>
+					<onup>111</onup>
+					<ondown>1209</ondown>
+					<onclick lang="python"><![CDATA[
+list = mc.GetActiveWindow().GetList(111)
+list.SetContentURL("http://gdata.youtube.com/feeds/api/playlists/5759215FDB381060?v=2&alt=rss")
+label = mc.GetWindow(14000).GetLabel(1200)
+label.SetLabel("Season 4")
+
+myTracker.trackEvent("Content", "Click", "Season 4")
+]]></onclick>
+				</control>
+				<control type="button" id="1205">
+					<posx>938</posx>
+					<posy>485</posy>
+					<width>92</width>
+					<height>29</height>
+					<visible>true</visible>
+					<texturefocus>button_blue_hover.png</texturefocus>
+					<texturenofocus>button_blue.png</texturenofocus>
+					<label>Season 5</label>
+					<font>font16</font>
+					<textcolor>white</textcolor>
+					<align>center</align>
+					<aligny>center</aligny>
+					<onleft>1204</onleft>
+					<onup>111</onup>
+					<ondown>1209</ondown>
+					<onclick lang="python"><![CDATA[
+list = mc.GetActiveWindow().GetList(111)
+list.SetContentURL("http://gdata.youtube.com/feeds/api/playlists/BFB5AB68D7AFDD89?v=2&alt=rss")
+label = mc.GetWindow(14000).GetLabel(1200)
+label.SetLabel("Season 5")
+
+myTracker.trackEvent("Content", "Click", "Season 5")
+]]></onclick>
+				</control>
+				<control type="button" id="1206">
+					<posx>598.5</posx>
+					<posy>519</posy>
+					<width>92</width>
+					<height>29</height>
+					<visible>true</visible>
+					<texturefocus>button_red_hover.png</texturefocus>
+					<texturenofocus>button_red.png</texturenofocus>
+					<label>Reconstruction</label>
+					<font>font10</font>
+					<textcolor>white</textcolor>
+					<align>center</align>
+					<aligny>center</aligny>
+					<onleft>111</onleft>
+					<onright>1207</onright>
+					<onup>1202</onup>
+					<onclick lang="python"><![CDATA[
+list = mc.GetActiveWindow().GetList(111)
+list.SetContentURL("http://gdata.youtube.com/feeds/api/playlists/21EE95CDDAB7F56C?v=2&alt=rss")
+label = mc.GetWindow(14000).GetLabel(1200)
+label.SetLabel("Reconstruction")
+
+myTracker.trackEvent("Content", "Click", "Reconstruction")
+]]></onclick>
+				</control>
+				<control type="button" id="1207">
+					<posx>695.5</posx>
+					<posy>519</posy>
+					<width>92</width>
+					<height>29</height>
+					<visible>true</visible>
+					<texturefocus>button_red_hover.png</texturefocus>
+					<texturenofocus>button_red.png</texturenofocus>
+					<label>Recreation</label>
+					<font>font16</font>
+					<textcolor>white</textcolor>
+					<align>center</align>
+					<aligny>center</aligny>
+					<onleft>1206</onleft>
+					<onright>1208</onright>
+					<onup>1203</onup>
+					<onclick lang="python"><![CDATA[
+list = mc.GetActiveWindow().GetList(111)
+list.SetContentURL("http://gdata.youtube.com/feeds/api/playlists/3580EE5D7312789D?v=2&alt=rss")
+label = mc.GetWindow(14000).GetLabel(1200)
+label.SetLabel("Recreation")
+
+myTracker.trackEvent("Content", "Click", "Recreation")
+]]></onclick>
+				</control>
+				<control type="button" id="1208">
+					<posx>792.5</posx>
+					<posy>519</posy>
+					<width>92</width>
+					<height>29</height>
+					<visible>true</visible>
+					<texturefocus>button_red_hover.png</texturefocus>
+					<texturenofocus>button_red.png</texturenofocus>
+					<label>Shorts</label>
+					<font>font16</font>
+					<textcolor>white</textcolor>
+					<align>center</align>
+					<aligny>center</aligny>
+					<onleft>1207</onleft>
+					<onright>1209</onright>
+					<onup>1204</onup>
+					<onclick lang="python"><![CDATA[
+list = mc.GetActiveWindow().GetList(111)
+list.SetContentURL("http://gdata.youtube.com/feeds/api/playlists/57D5524ECCB644DC?v=2&alt=rss")
+label = mc.GetWindow(14000).GetLabel(1200)
+label.SetLabel("Shorts")
+
+myTracker.trackEvent("Content", "Click", "Shorts")
+]]></onclick>
+				</control>
+				<control type="button" id="1209">
+					<posx>889.5</posx>
+					<posy>519</posy>
+					<width>92</width>
+					<height>29</height>
+					<visible>true</visible>
+					<texturefocus>button_red_hover.png</texturefocus>
+					<texturenofocus>button_red.png</texturenofocus>
+					<label>PSA's & Extras</label>
+					<font>font10</font>
+					<textcolor>white</textcolor>
+					<align>center</align>
+					<aligny>center</aligny>
+					<onleft>1208</onleft>
+					<onup>1205</onup>
+					<onclick lang="python"><![CDATA[
+list = mc.GetActiveWindow().GetList(111)
+list.SetContentURL("http://gdata.youtube.com/feeds/api/playlists/31C38AED336F5C33?v=2&alt=rss")
+label = mc.GetWindow(14000).GetLabel(1200)
+label.SetLabel("PSA's & Extras")
+
+myTracker.trackEvent("Content", "Click", "PSA's & Extras")
+]]></onclick>
+				</control>
+			</control>
+		</control>
+	</controls>
+</window>
