@@ -7,7 +7,7 @@ myTracker = tracker.Tracker("MO-3541558-10")
 myTracker.trackView("home")
 ]]></onload>
 	<defaultcontrol always="true">111</defaultcontrol>
-	<allowoverlay>no</allowoverlay>
+	<allowoverlay>yes</allowoverlay>
 	<controls>
 		<control type="group">
 			<control type="group" id="110">
@@ -18,7 +18,7 @@ myTracker.trackView("home")
 					<height>720</height>
 					<texture>main.png</texture>
 				</control>
-				<control type="label" id="1200">
+				<control type="label" id="1100">
 					<posx>100</posx>
 					<posy>100</posy>
 					<width>350</width>
@@ -38,7 +38,7 @@ myTracker.trackView("home")
 					<width>350</width>
 					<height>450</height>
 					<onright>1201</onright>
-					<ondown>1201</ondown>
+					<!--<ondown>1200</ondown>-->
 					<orientation>vertical</orientation>
 					<itemlayout width="340" height="20">
 						<control type="label">
@@ -101,6 +101,37 @@ mc.GetPlayer().Play(listitem)
 					<height>360</height>
 					<texture diffuse="mask.png">$INFO[Container(111).ListItem.Thumb]</texture>
 				</control>
+<!--REMOVED PENDING BOXEE ISSUE 6031
+				<control type="button" id="1200">
+					<posx>100</posx>
+					<posy>610</posy>
+					<width>100</width>
+					<height>35</height>
+					<visible>true</visible>
+					<texturefocus>-</texturefocus>
+					<texturenofocus>-</texturenofocus>
+					<label>Play All</label>
+					<font>font30</font>
+					<textcolor>white</textcolor>
+					<focusedcolor>FF7A0000</focusedcolor>
+					<align>center</align>
+					<aligny>center</aligny>
+					<onup>111</onup>
+					<onright>1201</onright>
+					<onclick lang="python"><![CDATA[
+items = mc.GetWindow(14000).GetList(111).GetItems()
+if mc.GetPlayer().IsPlaying():
+    mc.GetPlayer().Stop()
+playlist = mc.PlayList(mc.PlayList.PLAYLIST_VIDEO)
+playlist.Clear()
+for item in items:
+    playlist.Add(item)
+	
+myTracker.trackEvent("Content", "Click", "Play All")
+playlist.Play(0)
+]]></onclick>
+				</control>
+-->
 				<control type="button" id="1201">
 					<posx>550</posx>
 					<posy>485</posy>
@@ -120,7 +151,7 @@ mc.GetPlayer().Play(listitem)
 					<onclick lang="python"><![CDATA[
 list = mc.GetActiveWindow().GetList(111)
 list.SetContentURL("http://gdata.youtube.com/feeds/api/playlists/49C4397CE9AC5260?v=2&alt=rss")
-label = mc.GetWindow(14000).GetLabel(1200)
+label = mc.GetWindow(14000).GetLabel(1100)
 label.SetLabel("Season 1")
 
 myTracker.trackEvent("Content", "Click", "Season 1")
@@ -146,7 +177,7 @@ myTracker.trackEvent("Content", "Click", "Season 1")
 					<onclick lang="python"><![CDATA[
 list = mc.GetActiveWindow().GetList(111)
 list.SetContentURL("http://gdata.youtube.com/feeds/api/playlists/F95A9033A2D5A326?v=2&alt=rss")
-label = mc.GetWindow(14000).GetLabel(1200)
+label = mc.GetWindow(14000).GetLabel(1100)
 label.SetLabel("Season 2")
 
 myTracker.trackEvent("Content", "Click", "Season 2")
@@ -172,7 +203,7 @@ myTracker.trackEvent("Content", "Click", "Season 2")
 					<onclick lang="python"><![CDATA[
 list = mc.GetActiveWindow().GetList(111)
 list.SetContentURL("http://gdata.youtube.com/feeds/api/playlists/4672D826BE54162D?v=2&alt=rss")
-label = mc.GetWindow(14000).GetLabel(1200)
+label = mc.GetWindow(14000).GetLabel(1100)
 label.SetLabel("Season 3")
 
 myTracker.trackEvent("Content", "Click", "Season 3")
@@ -198,7 +229,7 @@ myTracker.trackEvent("Content", "Click", "Season 3")
 					<onclick lang="python"><![CDATA[
 list = mc.GetActiveWindow().GetList(111)
 list.SetContentURL("http://gdata.youtube.com/feeds/api/playlists/5759215FDB381060?v=2&alt=rss")
-label = mc.GetWindow(14000).GetLabel(1200)
+label = mc.GetWindow(14000).GetLabel(1100)
 label.SetLabel("Season 4")
 
 myTracker.trackEvent("Content", "Click", "Season 4")
@@ -223,22 +254,22 @@ myTracker.trackEvent("Content", "Click", "Season 4")
 					<onclick lang="python"><![CDATA[
 list = mc.GetActiveWindow().GetList(111)
 list.SetContentURL("http://gdata.youtube.com/feeds/api/playlists/BFB5AB68D7AFDD89?v=2&alt=rss")
-label = mc.GetWindow(14000).GetLabel(1200)
+label = mc.GetWindow(14000).GetLabel(1100)
 label.SetLabel("Season 5")
 
 myTracker.trackEvent("Content", "Click", "Season 5")
 ]]></onclick>
 				</control>
 				<control type="button" id="1206">
-					<posx>598.5</posx>
+					<posx>550</posx>
 					<posy>519</posy>
-					<width>92</width>
+					<width>140</width>
 					<height>29</height>
 					<visible>true</visible>
-					<texturefocus>button_red_hover.png</texturefocus>
-					<texturenofocus>button_red.png</texturenofocus>
+					<texturefocus>button_red_large_hover.png</texturefocus>
+					<texturenofocus>button_red_large.png</texturenofocus>
 					<label>Reconstruction</label>
-					<font>font10</font>
+					<font>font16</font>
 					<textcolor>white</textcolor>
 					<align>center</align>
 					<aligny>center</aligny>
@@ -248,14 +279,14 @@ myTracker.trackEvent("Content", "Click", "Season 5")
 					<onclick lang="python"><![CDATA[
 list = mc.GetActiveWindow().GetList(111)
 list.SetContentURL("http://gdata.youtube.com/feeds/api/playlists/21EE95CDDAB7F56C?v=2&alt=rss")
-label = mc.GetWindow(14000).GetLabel(1200)
+label = mc.GetWindow(14000).GetLabel(1100)
 label.SetLabel("Reconstruction")
 
 myTracker.trackEvent("Content", "Click", "Reconstruction")
 ]]></onclick>
 				</control>
 				<control type="button" id="1207">
-					<posx>695.5</posx>
+					<posx>695.33</posx>
 					<posy>519</posy>
 					<width>92</width>
 					<height>29</height>
@@ -273,14 +304,14 @@ myTracker.trackEvent("Content", "Click", "Reconstruction")
 					<onclick lang="python"><![CDATA[
 list = mc.GetActiveWindow().GetList(111)
 list.SetContentURL("http://gdata.youtube.com/feeds/api/playlists/3580EE5D7312789D?v=2&alt=rss")
-label = mc.GetWindow(14000).GetLabel(1200)
+label = mc.GetWindow(14000).GetLabel(1100)
 label.SetLabel("Recreation")
 
 myTracker.trackEvent("Content", "Click", "Recreation")
 ]]></onclick>
 				</control>
 				<control type="button" id="1208">
-					<posx>792.5</posx>
+					<posx>792.66</posx>
 					<posy>519</posy>
 					<width>92</width>
 					<height>29</height>
@@ -298,22 +329,22 @@ myTracker.trackEvent("Content", "Click", "Recreation")
 					<onclick lang="python"><![CDATA[
 list = mc.GetActiveWindow().GetList(111)
 list.SetContentURL("http://gdata.youtube.com/feeds/api/playlists/57D5524ECCB644DC?v=2&alt=rss")
-label = mc.GetWindow(14000).GetLabel(1200)
+label = mc.GetWindow(14000).GetLabel(1100)
 label.SetLabel("Shorts")
 
 myTracker.trackEvent("Content", "Click", "Shorts")
 ]]></onclick>
 				</control>
 				<control type="button" id="1209">
-					<posx>889.5</posx>
+					<posx>889.99</posx>
 					<posy>519</posy>
-					<width>92</width>
+					<width>140</width>
 					<height>29</height>
 					<visible>true</visible>
-					<texturefocus>button_red_hover.png</texturefocus>
-					<texturenofocus>button_red.png</texturenofocus>
+					<texturefocus>button_red_large_hover.png</texturefocus>
+					<texturenofocus>button_red_large.png</texturenofocus>
 					<label>PSA's & Extras</label>
-					<font>font10</font>
+					<font>font16</font>
 					<textcolor>white</textcolor>
 					<align>center</align>
 					<aligny>center</aligny>
@@ -322,7 +353,7 @@ myTracker.trackEvent("Content", "Click", "Shorts")
 					<onclick lang="python"><![CDATA[
 list = mc.GetActiveWindow().GetList(111)
 list.SetContentURL("http://gdata.youtube.com/feeds/api/playlists/31C38AED336F5C33?v=2&alt=rss")
-label = mc.GetWindow(14000).GetLabel(1200)
+label = mc.GetWindow(14000).GetLabel(1100)
 label.SetLabel("PSA's & Extras")
 
 myTracker.trackEvent("Content", "Click", "PSA's & Extras")
